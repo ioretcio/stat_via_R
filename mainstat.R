@@ -1,7 +1,10 @@
 library("stringr")
 library("distributions3")
-source("functions.R")
 library("sm")
+
+
+source("functions.R")
+
 
 distribution <- read.delim("normal.txt") #зчитування даних
 
@@ -10,7 +13,7 @@ IQR <- IQR(distribution$data)  #довірчі межі між квантиля�
 Lower <- quartiles[1] - 1.5*IQR   # 
 Upper <- quartiles[2] + 1.5*IQR   #
 without_anomal <- subset(distribution$data, distribution$data > Lower & distribution$data < Upper)  #відсікання тих що не потрапили в довірчий інтервал
-length(without_anomal) #withoutanomal
+length(without_anomal)
 
 
 T_9 <- StudentsT(df = 9) #ініціалізація Ст'юдента
